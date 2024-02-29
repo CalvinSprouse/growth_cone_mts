@@ -1,0 +1,98 @@
+% growth_cone_mts.m
+
+%{
+Script description:
+This script is a modification to 'Traction_model_052813_3.m' to include
+microtubule (mt) action in the growth cone (gc). See 'Craig et al. 2015'
+for more information on original model features.
+
+Model description:
+
+%}
+
+% configure simulation parameters
+% define the system extent or length [micrometer]
+L = 12;
+% define the number of grid points [ ]
+N = 40;
+% define the time step [s]
+Deltat = 0.0001;
+
+% configure protein parameters
+lambda = 3;
+F = 4;
+gamma = 1000;
+b = 15;
+Vstar = 0.3;
+
+
+% calculate grid spacing [micrometer]
+Deltax = L / (N-1);
+% calculate grid sizes [micrometer]
+x = Deltax * (0:N-1);
+
+% calculate yet unkown 'h' terms
+h = Delta / Deltax;
+hh = delta/(deltax^2);
+
+% calculate the number of steps
+nstep = 100/delta;
+
+
+% calculate protein properties
+% veloity [micrometer/s]
+v = (N-(1:N))/(N-1);
+v_new = (N-(1:N))/(N-1);
+Fmyo = ones(size(1:N));
+T = (N-(1:N));
+
+% initialize the myson spacial distribution array
+m = ones(1,N); 
+m_new = ones(1,N);
+
+
+% MAIN LOOP
+for j=1:nstep
+
+    v_new(2:N-1) = v(2:N-1) + hh*(v(3:N) + v(1:N-2) -2*v(2:N-1))+(delta/(lambda))*(-T(2:N-1)+Fmyo(2:N-1));
+
+    v_new(N) = v(N-1);
+    v = v_new;
+    
+    m_new(2:(N)) = m(2:(N))+delta*(1-m(2:(N)))-h*gamma*(v(2:(N)).*m(2:(N))-v(1:(N-1)).*m(1:(N-1)));
+    m_new(1) = 0;
+    m = m_new;
+
+    % update myosin stress
+    delm(2:N) = (m(2:(N))-m(1:(N-1)))/deltax;
+    delm(1) = (m(2)-m(1))/deltax;
+    Fmyo = F*m;
+    
+    Nadh = (1+b*Fmyo).*exp(-v/Vstar);
+    T = Nadh.*v;    
+end
+
+
+% some yet unkown plotting preliminary operation
+for i=1:40
+    if(T(i)==max(T))
+        maxi=i;
+    end
+end
+xmax = deltax*(maxi-1)
+vmax = v(maxi)
+
+% OUTPUT
+x=deltax*(0:(N-1));
+Tv=v.*exp(-v/Vstar);
+Tf=1+b*Fmyo;
+
+figure
+plot(x,v,'m',x,Fmyo,'k--',x,T,'r','LineWidth',2)
+legend('Actin flow speed','Myosin density','Traction')
+
+% save simulation output to .mat file
+A = horzcat(x',v',T',m',Tv',Tf',Nadh');
+Parms = vertcat(lambda,F,gamma,b,Vstar,xmax,vmax);
+% Parms = vertcat(v0,mu0,F0,T0,Vstar,moff,beta,xmax,vmax);
+save("growth_cone_mts", "-v7", "-nocompression");
