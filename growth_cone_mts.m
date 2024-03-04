@@ -88,26 +88,25 @@ for j=1:nstep
 end
 
 
-% some yet unkown plotting preliminary operation
-for i=1:40
-    if(T(i)==max(T))
-        maxi=i;
-    end
-end
-xmax = Deltax*(maxi-1)
-vmax = v(maxi)
+% find the index corresponding to maximum traction
+[maxT, maxi] = max(T);
 
-% OUTPUT
-x = Deltax*(0:(N-1));
-Tv = v.*exp(-v/Vstar);
-Tf = 1+b*Fmyo;
+% find the corresponding position and velocity to max traction
+xmax = x(maxi);
+vmax = v(maxi);
 
+% calculate output quantities
+% x = Deltax*(0:(N-1));
+Tv = v .* exp(-v / Vstar);
+Tf = 1 + b*Fmyo;
+
+% velocity, myosin force, and traction spacial distribution figure
 figure
-plot(x,v,'m',x,Fmyo,'k--',x,T,'r','LineWidth',2)
-legend('Actin flow speed','Myosin density','Traction')
+plot(x, v, 'm', x, Fmyo, 'w--', x, T, 'r', LineWidth=2);
+legend('Actin flow speed','Myosin density','Traction');
 
 % save simulation output to .mat file
-A = horzcat(x',v',T',M',Tv',Tf',Nadh');
-Parms = vertcat(lambda,F,gamma,b,Vstar,xmax,vmax);
+A = horzcat(x', v', T', M', Tv', Tf', Nadh');
+Parms = vertcat(lambda, F, gamma, b, Vstar, xmax, vmax);
 % Parms = vertcat(v0,mu0,F0,T0,Vstar,moff,beta,xmax,vmax);
 save("growth_cone_mts", "-v7", "-nocompression");
