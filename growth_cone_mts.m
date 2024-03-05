@@ -8,9 +8,6 @@ for more information on original model features.
 
 Model description:
 
-
-Model questions for Dr. Craig:
-
 %}
 
 % configure simulation parameters
