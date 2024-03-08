@@ -15,7 +15,7 @@
 
 % specify theme and color theme
 \usetheme{gemini}
-\usecolortheme{gemini}
+\usecolortheme{mit}
 
 % define poster lengths for columns
 % If you have N columns, choose \sepwidth and \colwidth such that
@@ -42,79 +42,66 @@
 % setup logo
 \logoright{\includegraphics[height=7cm]{figures/cwu_logo.png}}
 
+
+%-----------------------------------------------------------------------------%
 % begin poster
 \begin{document}
 
-%-----------------------------------------------------------------------------%
 % begin the content framework
 \begin{frame}[t]
 \begin{columns}[t]
 \separatorcolumn%
 
+
 %-----------------------------------------------------------------------------%
 % first column of content
 \begin{column}{\colwidth}
 
-%-----------------------------------------------------------------------------%
+%------------------------------------------------
 % content block
-\begin{block}{Content}
-\end{block}
-
-%-----------------------------------------------------------------------------%
-% content block
-\begin{block}{Content}
-\end{block}
-
-%-----------------------------------------------------------------------------%
-% content block
-\begin{block}{Content}
+\begin{block}{Background}
 \end{block}
 
 \end{column}
 \separatorcolumn%
+
 
 %-----------------------------------------------------------------------------%
 % second column of content
-
 \begin{column}{\colwidth}
 
-%-----------------------------------------------------------------------------%
+%------------------------------------------------
 % content block
-\begin{block}{Content}
-\end{block}
-
-%-----------------------------------------------------------------------------%
-% content block
-\begin{block}{Content}
-\end{block}
-
-%-----------------------------------------------------------------------------%
-% content block
-\begin{block}{Content}
+\begin{block}{Model}
 \end{block}
 
 \end{column}
 \separatorcolumn%
+
 
 %-----------------------------------------------------------------------------%
 % third column of content
 \begin{column}{\colwidth}
 
-%-----------------------------------------------------------------------------%
+%------------------------------------------------
 % content block
-\begin{block}{Content}
+\begin{block}{Results}
 \end{block}
 
-%-----------------------------------------------------------------------------%
+%------------------------------------------------
 % content block
-\begin{block}{Content}
+\begin{block}{Future Work}
 \end{block}
 
-%-----------------------------------------------------------------------------%
+%------------------------------------------------
 % reference block
 \begin{block}{References}
-\nocite{*}
-\footnotesize{\bibliographystyle{plain}\bibliography{poster}}
+% uncomment to show all bib entries
+% \nocite{*}
+\footnotesize{
+    \bibliographystyle{plain}
+    \bibliography{../proposal/axon_growth2.bib}
+}
 \end{block}
 
 \end{column}
