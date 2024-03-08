@@ -15,26 +15,25 @@
 % Fonts
 % ====================
 
-\newfontfamily\Raleway[Ligatures=TeX]{Raleway}
-\newfontfamily\Lato[Ligatures=TeX]{Lato}
-
 \usefonttheme{professionalfonts}
 
-\setsansfont{Lato}[
-  UprightFont=*-Light,
-  ItalicFont=*-LightItalic,
-  BoldFont=*-Regular,
+\setsansfont{Times New Roman}[
+  UprightFont=*,
+  ItalicFont=*-Italic,
+  BoldFont=*-Bold,
   BoldItalicFont=*-Italic
 ]
 
-\setbeamerfont{headline}{family=\Raleway}
-\setbeamerfont{headline title}{size=\Huge,series=\bfseries}
+\setbeamerfont{headline}{family=\sffamily}
+% \setbeamerfont{headline title}{size=\Huge, series=\bfseries}
+\setbeamerfont{headline title}{size=\Huge}
 \setbeamerfont{headline author}{size=\Large}
 \setbeamerfont{headline institute}{size=\normalsize}
-\setbeamerfont{block title}{family=\Raleway,size=\large,series=\bfseries}
-\setbeamerfont{heading}{family=\Lato,series=\bfseries}
+\setbeamerfont{block title}{family=\sffamily,size=\large, series=\bfseries}
+\setbeamerfont{heading}{family=\rmfamily, series=\bfseries}
 \setbeamerfont{caption}{size=\small}
-\setbeamerfont{footline}{family=\Raleway,size=\normalsize}
+\setbeamerfont{footline}{family=\sffamily, size=\normalsize}
+
 
 % ====================
 % Macros
