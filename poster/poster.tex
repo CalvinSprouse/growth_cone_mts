@@ -15,7 +15,7 @@
 
 % specify theme and color theme
 \usetheme{gemini}
-\usecolortheme{mit}
+\usecolortheme{earth}
 
 % define poster lengths for columns
 % If you have N columns, choose \sepwidth and \colwidth such that
@@ -62,6 +62,8 @@
 \begin{block}{Background}
 \end{block}
 
+Background starting with neurons -> axons -> growth cones -> base model
+
 \end{column}
 \separatorcolumn%
 
@@ -73,6 +75,9 @@
 %------------------------------------------------
 % content block
 \begin{block}{Model}
+
+Model, modifications to the base model
+
 \end{block}
 
 \end{column}
@@ -86,22 +91,30 @@
 %------------------------------------------------
 % content block
 \begin{block}{Results}
+
+Results, what did this tell us.
+
 \end{block}
 
 %------------------------------------------------
-% content block
+% future work block
 \begin{block}{Future Work}
+
+This model is constructed on a population based steady state model with temporal attributes included as an after-thought. A more rigorous approach would likely include an agent based model with mt motions, protein binding events, and actin network activity taking place with defined rates. An agent based simulation constructed in this way could explore more precise relationships between actin treadmilling, adhesion, and mt force generation by sliding and polymerization. Constructed properly, this agent based simulation could explore the two-dimensional landscape of the growth cone and investigate the role of mt force generation in growth cone guidance or lack thereof. Furthermore, such a model would have the advantage of being double validated by the original population model in the growth cone and agent based simulations in the axon.
+
 \end{block}
 
 %------------------------------------------------
 % reference block
 \begin{block}{References}
+
 % uncomment to show all bib entries
 % \nocite{*}
 \footnotesize{
     \bibliographystyle{plain}
     \bibliography{../proposal/axon_growth2.bib}
 }
+
 \end{block}
 
 \end{column}
