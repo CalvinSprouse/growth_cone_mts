@@ -63,9 +63,8 @@ M = ones(1, N);
 M_new = ones(1, N);
 
 
-% MAIN LOOP
+% loop to reach steady state
 for j=1:nstep
-
     v_new(2:N-1) = v(2:N-1) + dtdx2*(v(3:N) + v(1:N-2) -2*v(2:N-1))+(Deltat/(lambda))*(-T(2:N-1)+Fmyo(2:N-1));
 
     v_new(N) = v(N-1);
