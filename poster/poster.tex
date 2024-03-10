@@ -10,6 +10,7 @@
 \usepackage{pgfplots}
 \usepackage{anyfontsize}
 \usepackage{siunitx}
+\usepackage{multicol}
 
 % configure pgfplots
 \pgfplotsset{compat=1.14}
@@ -79,17 +80,35 @@ The axon shown in Figure~\ref{fig:neuron_background} expresses the typical plus-
 
 \begin{block}{Background}
 
-% representative figure of GC
+\begin{figure}
+    \centering
+    \includegraphics[width=0.65\textwidth]{figures/introduction/gc_crag_1a.png}
+    \caption{\label{fig:gc_craig}
+        Illustrative schematic of a growth cone from Ref.~\cite{craig2018fcn} Figure 1A. Shown in green with black tips are the MTs as in Figure~\ref{fig:neuron_background}. Shown in black is a chemical gradient indicating the direction the GC should steer. Yellow and orange arrows indicate the relative velocity of forward polymerization and depolymerization respectively of the actomyosin network. The presence of MTs increases adhesion of the actomyosin network and promotes forward polymerization.
+    }
+\end{figure}
 
-Axon growth is lead by a region called the growth cone (GC). The GC is distinguished from the rest of the axon by a decrease in MT density, sensing equipment for reading chemical guidance cues, and a force generating network of actin filaments and myosin motors.
+Axon growth is lead by a region called the growth cone (GC) shown in Figure~\ref{fig:gc_craig}. The GC is distinguished from the rest of the axon by a decrease in MT density, sensing equipment for reading chemical guidance cues, and a force generating network of actin filaments and myosin motors.
 
-% figure of actomyosin network and treadmill
+\begin{figure}
+    \centering
+    \includegraphics[width=0.4\textwidth]{figures/introduction/actin_treadmill.png}
+    \caption{\label{fig:actin_craig}
+        Actin treadmill schematic from Ref.~\cite{craig2012bj} Figure 1B. This view is effectively a thin angular slice of Figure~\ref{fig:gc_craig}. The rightmost edge is the leading edge of the GC where polymerization activity occurs. The leftmost edge then houses the depolymerization machinery.
+    }
+\end{figure}
 
-The actomyosin network is a treadmill of actin filaments and myosin motors thought to be the primary diver in elongation~\cite{craig2012bj}. The treadmill behavior emerges from the combination of leading edge polymerization and trailing edge depolymerization of the actin. Myosin acts simultaneously as a crosslinker for the network and the transporter of trailing edge depolymerize actin filament to the leading edge for polymerization. By modulating actin adhesion to the substrate the GC can execute carefully controlled growth and steering. The role of MTs is currently understood as signal pathways between the chemical sensing equipment and the actomyosin network~\cite{craig2012bj, kalil2005con, sanchez-huertas2021fmn}.
+The actomyosin network is a treadmill of actin filaments and myosin motors thought to be the primary diver in elongation~\cite{craig2012bj}. The treadmill behavior emerges from the combination of leading edge polymerization and trailing edge depolymerization of the actin shown in Figure~\ref{fig:actin_craig}. Also impacting the actomyosin network are tension forces from the stretching of the GC membrane~\cite{craig2012bj}. Myosin acts simultaneously as a crosslinker for the network and the transporter of trailing edge depolymerize actin filament to the leading edge for polymerization. By modulating actin adhesion to the substrate the GC can execute carefully controlled growth and steering. The role of MTs is currently understood as signal pathways between the chemical sensing equipment and the actomyosin network~\cite{craig2012bj, kalil2005con, sanchez-huertas2021fmn}.
 
-% figure of MT penetration into GC region over actomyosin network
+\begin{figure}
+    \centering
+    \includegraphics[width=0.5\textwidth]{figures/introduction/traction_generation.png}
+    \caption{\label{fig:traction}
+        A side-view schematic of the GC from Ref.~\cite{athamneh2015fcn} Figure 1. Shown in green are the MTs as in Figure~\ref{fig:neuron_background}. This is representative of our proposed one-dimensional model. Black arrows indicate the direction of actin flow and generated forces from the GC frame. 
+    }
+\end{figure}
 
-We investigate the role of the MTs in the GC regions as conveyors of force from the axon. In the axon, Dynein motors act between MTs inducing \(\qty{}{\pico\newton}\) scale forces primarily in the direction of the MTs plus-end~\cite{nedelec1997n13}. The forces acting on the GC are observed to be small, on the order of \(\qty{}{\pico\newton}\)~\cite{devincentiis2020jn, raffa2023scdb}. Furthermore, it seems the MTs protruding into the GC act to stabilize against contractile forces generated in the actomyosin network and the GC membrane~\cite{raffa2023scdb}. We extend the work done in Ref.~\cite{craig2012bj} to include distill-end MT force generation by a Dynein sorting mechanism and investigate the consequence of interaction in the GC.
+We investigate the role of the MTs in the GC regions as conveyors of force from the axon. In the axon, Dynein motors act between MTs inducing \(\qty{}{\pico\newton}\) scale forces primarily in the direction of the MTs plus-end~\cite{nedelec1997n13, raffa2023scdb}. The forces acting on the GC are observed to be small, on the order of \(\qty{}{\pico\newton}\)~\cite{devincentiis2020jn, raffa2023scdb}. Furthermore, it seems the MTs protruding into the GC act to stabilize against contractile forces generated in the actomyosin network and the GC membrane~\cite{raffa2023scdb}. We extend the work done in Ref.~\cite{craig2012bj} to include distill-end MT force generation by a Dynein sorting mechanism and investigate the consequence of interaction in the GC.
 
 \end{block}
 
@@ -105,7 +124,26 @@ We investigate the role of the MTs in the GC regions as conveyors of force from 
 % content block
 \begin{block}{Model}
 
-Model, modifications to the base model
+We begin with Ref.~\cite{craig2012bj} which describes a one-dimensional computational adhesion clutch model in the context of the actomyosin network. This is a population based steady-state model which aims to explore the relationship of actin retrograde flow, actin density, and traction forces.
+
+% "default" figure from simulation showing exactly this relationship
+\begin{figure}
+    \centering
+    \includegraphics[width=0.5\textwidth]{figures/model/sim_default.pdf}
+    \caption{\label{fig:sim_steady}
+        Note for feedback, figure not in final form (black background especially needs to go).
+
+        Representative output of the steady state of the actomyosin network from Ref.~\cite{craig2012bj}. The pink line represents the retrograde actin flow speed from the leading edge, \(x=\qty{0}{\micro\meter}\), to the trailing edge, \(x=\qty{12}{\micro\meter}\).
+    }
+\end{figure}
+
+In addition to the features of this model we introduce MTs protruding from the axon via Dynein sliding forces. After the network has reached a steady state shown in Figure~\ref{fig:sim_steady} we permit MTs to enter the actomyosin network through Dynein sliding forces and MT polymerization. Here we introduce two distinct behaviors for testing:
+\begin{enumerate}
+\item crosslinker proteins bind primarily to the plus-end of the MT effectively resulting in a single point of contact with the actomyosin network;
+\item crosslinker proteins bind uniformly to the MT resulting in multiple contact points across the actomyosin network.
+\end{enumerate}
+
+Once bound we calculate forces on the crosslinker proteins and Dynein and allow for force-dependent dissociation from the MT. With the remaining proteins we apply the forces to the MT where opposing forces will induce bending. At the peak of the bend sheer forces are calculated and the MT may sever into two MTs. Of the two MTs the forwardmost MT will lack the support of the axon MT-Dynein network. This MT will be carried toward the axon by retrograde flow.
 
 \end{block}
 
@@ -136,12 +174,12 @@ This model is constructed on a population based steady state model with temporal
 %------------------------------------------------
 % reference block
 \begin{block}{References}
-
+\begin{multicols}{2}
 \fontsize{16pt}{12pt}\selectfont
 \nocite{craig2015pb, craig2012bj, devincentiis2020jn, kalil2005con, nedelec1997n13, raffa2023scdb, sanchez-huertas2021fmn}
 \bibliographystyle{plain}
 \bibliography{../proposal/axon_growth2.bib}
-
+\end{multicols}
 \end{block}
 
 \end{column}
