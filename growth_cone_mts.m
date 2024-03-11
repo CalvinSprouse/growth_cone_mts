@@ -478,4 +478,4 @@ Tf = 1 + b*Fmyo;
 A = horzcat(x', v', T', M', Tv', Tf', Nadh');
 Parms = vertcat(lambda, F, gamma, b, Vstar, xmax, vmax);
 % Parms = vertcat(v0,mu0,F0,T0,Vstar,moff,beta,xmax,vmax);
-save("growth_cone_mts", "-v7", "-nocompression");
+save("growth_cone_mts_m2", "-v7", "-nocompression");

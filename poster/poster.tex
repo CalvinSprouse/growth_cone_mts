@@ -182,7 +182,7 @@ Results, what did this tell us.
 % future work block
 \begin{block}{Future Work}
 
-This model is constructed on a population based steady state model with temporal attributes included as an after-thought. A more rigorous approach would likely include an agent based model with mt motions, protein binding events, and actin network activity taking place with defined rates. An agent based simulation constructed in this way could explore more precise relationships between actin treadmilling, adhesion, and mt force generation by sliding and polymerization. Constructed properly, this agent based simulation could explore the two-dimensional landscape of the growth cone and investigate the role of mt force generation in growth cone guidance or lack thereof. Furthermore, such a model would have the advantage of being double validated by the original population model in the growth cone and agent based simulations in the axon.
+This model currently only considers a single interaction time-scale between the actomyosin network and the protruding MTs. There are perhaps interesting behaviors not observed due to the lack of feedback from the effect of an MT dragging against the actomyosin treadmill. An agent based model that updates both the MTs and the actomyosin network at the same time steps would be able to capture this behavior in a way that the current model does not. Furthermore, this current model does not consider bending and snapping of MTs which is known to contribute both to GC forces and to the production of distally located short MTs.
 
 \end{block}
 
@@ -191,9 +191,10 @@ This model is constructed on a population based steady state model with temporal
 \begin{block}{References}
 \begin{multicols}{2}
 \fontsize{16pt}{12pt}\selectfont
-\nocite{craig2015pb, craig2012bj, devincentiis2020jn, kalil2005con, nedelec1997n13, raffa2023scdb, sanchez-huertas2021fmn}
+% \nocite{craig2015pb, craig2012bj, devincentiis2020jn, kalil2005con, nedelec1997n13, raffa2023scdb, sanchez-huertas2021fmn}
 \bibliographystyle{plain}
-\bibliography{../proposal/axon_growth2.bib}
+% \bibliography{../proposal/axon_growth2.bib}
+\bibliography{axon_growth2.bib}
 \end{multicols}
 \end{block}
 
