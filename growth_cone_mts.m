@@ -20,7 +20,7 @@ xlink_model = 2;
 
 % configure simulation parameters
 % define the system extent or length [micrometer]
-L = 12;
+L = 24;
 % define the number of grid points [ ]
 N = 40;
 % define the time step [s]
@@ -389,7 +389,7 @@ for si = 1:(nsteps_mts-1)
 		% use weighted averages
 		vb = vbd;
 		vf = (ndp(mt_i)*vfd + nxpar(mt_i)*cross_v)/np;
-		if np == 0
+		if np == 0 || vf == 0
 			vf = vfd;
 		end
 
@@ -478,4 +478,4 @@ Tf = 1 + b*Fmyo;
 A = horzcat(x', v', T', M', Tv', Tf', Nadh');
 Parms = vertcat(lambda, F, gamma, b, Vstar, xmax, vmax);
 % Parms = vertcat(v0,mu0,F0,T0,Vstar,moff,beta,xmax,vmax);
-save("growth_cone_mts_m2", "-v7", "-nocompression");
+save("growth_cone_mts_longL", "-v7", "-nocompression");
