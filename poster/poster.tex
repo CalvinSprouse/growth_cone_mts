@@ -104,7 +104,7 @@ The actomyosin network is a treadmill of actin filaments and myosin motors thoug
     \centering
     \includegraphics[width=0.5\textwidth]{figures/introduction/traction_generation.png}
     \caption{\label{fig:traction}
-        A side-view schematic of the GC from Ref.~\cite{athamneh2015fcn} Figure 1. Shown in green are the MTs as in Figure~\ref{fig:neuron_background}. This is representative of our proposed one-dimensional model. Black arrows indicate the direction of actin flow and generated forces from the GC frame. 
+        A side-view schematic of the GC from Ref.~\cite{athamneh2015fcn} Figure 1. Shown in green are the MTs as in Figure~\ref{fig:neuron_background}. This is representative of our proposed one-dimensional model. Black arrows indicate the direction of actin flow and generated forces from the GC frame.
     }
 \end{figure}
 
@@ -129,21 +129,36 @@ We begin with Ref.~\cite{craig2012bj} which describes a one-dimensional computat
 % "default" figure from simulation showing exactly this relationship
 \begin{figure}
     \centering
-    \includegraphics[width=0.5\textwidth]{figures/model/sim_default.pdf}
+    \includegraphics[width=0.35\textwidth]{../.figures/steady_state_og.pdf}
     \caption{\label{fig:sim_steady}
-        Note for feedback, figure not in final form (black background especially needs to go).
-
-        Representative output of the steady state of the actomyosin network from Ref.~\cite{craig2012bj}. The pink line represents the retrograde actin flow speed from the leading edge, \(x=\qty{0}{\micro\meter}\), to the trailing edge, \(x=\qty{12}{\micro\meter}\).
+        Representative output of the steady state of the actomyosin network from Ref.~\cite{craig2012bj}. The pink line represents the retrograde actin flow speed from the leading edge, \(x=\qty{0}{\micro\meter}\), to the trailing edge, \(x=\qty{12}{\micro\meter}\). The black dashed line represents the contractile forces from myosin. The red line represents the traction forces arising from actin adhesion to the substrate. Under these conditions the GC is moving in the \(-x\) direction.
     }
 \end{figure}
 
-In addition to the features of this model we introduce MTs protruding from the axon via Dynein sliding forces. After the network has reached a steady state shown in Figure~\ref{fig:sim_steady} we permit MTs to enter the actomyosin network through Dynein sliding forces and MT polymerization. Here we introduce two distinct behaviors for testing:
+In addition to the features of this model we introduce MTs protruding from the axon via Dynein sliding forces. After the network has reached a steady state, we permit MTs to enter the GC through Dynein sliding forces and MT polymerization. Here we introduce two distinct behaviors for testing:
 \begin{enumerate}
 \item crosslinker proteins bind primarily to the plus-end of the MT effectively resulting in a single point of contact with the actomyosin network;
 \item crosslinker proteins bind uniformly to the MT resulting in multiple contact points across the actomyosin network.
 \end{enumerate}
 
-Once bound we calculate forces on the crosslinker proteins and Dynein and allow for force-dependent dissociation from the MT. With the remaining proteins we apply the forces to the MT where opposing forces will induce bending. At the peak of the bend sheer forces are calculated and the MT may sever into two MTs. Of the two MTs the forwardmost MT will lack the support of the axon MT-Dynein network. This MT will be carried toward the axon by retrograde flow.
+% model figure
+\begin{figure}
+    \centering
+    \includegraphics[width=0.9\textwidth]{figures/model/model.png}
+    \caption{\label{fig:main_model}
+        The one-dimensional model of the GC under study. Labelled below are the P, T, and C regions of the GC. In the P region we model an actomyosin network as in Ref.~\cite{craig2012bj}. Here, crosslinker proteins bind to the protruding MT and exert a force proportional to the velocity of myosin at the binding location. The length of this region can be tuned but it set to \(L=\qty{12}{\micro\meter}\). In the \(\qty{5}{\micro\meter}\) T region no protein binding occurs. In the C region Dynein motors bind between the single MT protruding into the GC and an array of axonal MTs assumed to be stabilized against motion by a network of crosslinkers.
+    }
+\end{figure}
+
+The simulation begins with the actomyosin network reaching a steady state as described by Ref.~\cite{craig2012bj}. Once in a steady state we move to an agent based model simulating the action of a single MT protruding into the GC. We simulate the interactions of this MT and motor proteins described in Figure~\ref{fig:main_model} over a characteristic time of \(t=\qty{100}{\second}\). This time is obtained by calculating the time it takes for an actin filament to traverse the actomyosin network.
+
+\end{block}
+
+%------------------------------------------------
+% content block
+\begin{block}{Results}
+
+Results, what did this tell us.
 
 \end{block}
 
